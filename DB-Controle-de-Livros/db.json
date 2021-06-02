@@ -11,6 +11,12 @@
       "email": "ad",
       "senha": "ad",
       "id": 2
+    },
+    {
+      "usuario": "gustavoC",
+      "email": "gustavoc@testando.com",
+      "senha": "gustavo",
+      "id": 3
     }
   ],
   "livros": [
@@ -28,6 +34,16 @@
       "id": 3,
       "nomeLivro": "Harry Potter - Ordem da Fenix",
       "usuarioId": 1
+    },
+    {
+      "nomeLivro": "As aventuras de pi",
+      "usuarioId": 1,
+      "id": 4
+    },
+    {
+      "nomeLivro": "Diário de um banana",
+      "usuarioId": 3,
+      "id": 5
     }
   ],
   "reservas": [
@@ -36,6 +52,22 @@
       "devolucao": "06/06/2021",
       "usuarioId": 1,
       "livroId": 3
+    },
+    {
+      "devolucao": 700963128850896000000,
+      "id": 2
+    },
+    {
+      "devolucao": 700964078947632000000,
+      "id": 3
+    },
+    {
+      "devolucao": 18780.12276818287,
+      "id": 4
+    },
+    {
+      "devolucao": 2,
+      "id": 5
     }
   ]
 }

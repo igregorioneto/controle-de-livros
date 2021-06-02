@@ -29,10 +29,25 @@ export default {
                 .filter(user => user.usuario === this.usuario && user.senha === this.senha)
                 
                 if(usuario_logado.length !== 0) {
-                    console.log(usuario_logado)
+                    let user = {
+                        email: usuario_logado[0].email, 
+                        id: usuario_logado[0].id, 
+                        senha: usuario_logado[0].senha, 
+                        usuario: usuario_logado[0].usuario
+                    }
+                    
+                    localStorage.setItem('usuario_logado',
+                    JSON.stringify( user ))
+
+                    this.$router.push('/livros-reservados')
+                    this.limparCampos()
                 }
                              
             }
+        },
+        limparCampos() {
+            this.usuario = ''
+            this.senha = ''
         }
     },
     computed: {

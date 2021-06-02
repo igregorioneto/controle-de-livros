@@ -3,11 +3,13 @@
         <div class="login-box">
             <h3>Solicitar Reserva</h3>
             <div class="form-login">
-                <select name="" id="">
-                    <option value="">Livros reservados</option>
+                <select name="" id="" v-model="reservas">
+                    <option :value="reserva.livroId" v-for="(reserva,index) in reservas" :key="index">
+                        {{reserva.nomeLivro}}
+                    </option>
                 </select>
                 <div class="form-button">
-                    <button class="cadastrar">Solicitar</button>
+                    <button class="cadastrar" @click="Reservar()">Solicitar</button>
                     <button class="cancelar" @click="Cancelar()">Cancelar</button>
                 </div>
             </div>
@@ -17,10 +19,55 @@
 
 <script>
 export default {
+    data() {
+        return {
+            reservas: []
+        }
+    },
     methods: {
         Cancelar() {
             this.$router.push('livros-reservados')
+        },
+        Reservar() {
+            console.log(this.reservas)
+            let data = new Date()
+            let data_devolucao = data.getDate()
+            console.log(data_devolucao)
+            let order = {
+                livroId: this.reservas.livroId,
+                usuarioId: this.reservas.usuarioId,
+                devolucao: data_devolucao,
+            }
+            this.$store.dispatch('setReserva', order)
+
+            this.Cancelar()
         }
+    },
+    computed: {
+        getLivros() {
+            return this.$store.getters.getLivros
+        },
+        getUsuarios() {
+            return this.$store.getters.getUsuarios
+        }
+    },
+    beforeMount() {
+        this.$store.dispatch('getUsuarios')
+        this.$store.dispatch('getLivros')
+        
+        this.getUsuarios.map(usuario => {
+            this.getLivros.map(livro => {
+                if(usuario.id !== livro.usuarioId) {
+                    this.reservas.push(
+                        {
+                            nomeLivro: livro.nomeLivro,
+                            livroId: livro.id,
+                            usuarioId: usuario.id
+                        }
+                    )
+                }
+            })
+        })
     }
 }
 </script>

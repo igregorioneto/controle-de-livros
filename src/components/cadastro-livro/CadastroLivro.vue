@@ -17,8 +17,7 @@
 export default {
     data(){
         return {
-            livro: '',
-            usuarioId: 1
+            livro: ''
         }
     },
     methods: {
@@ -26,9 +25,10 @@ export default {
             this.$router.push('livros-reservados')
         },
         cadastrarLivro() {
+            let user = JSON.parse(localStorage.getItem('usuario_logado'))
             let order = {
                 nomeLivro: this.livro,
-                usuarioId: this.usuarioId
+                usuarioId: user.id
             }
             this.$store.dispatch('setLivros', order)
 

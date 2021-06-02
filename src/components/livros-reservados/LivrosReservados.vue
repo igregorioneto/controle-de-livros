@@ -12,10 +12,10 @@
                     <th>Usuario</th>
                     <th>Data de devolução</th>
                 </thead>
-                <tbody v-for="(reserva,index) in getReservas" :key="index">
-                    <td>{{reserva.livroId}}</td>
-                    <td>{{reserva.usuarioId}}</td>
-                    <td>{{reserva.devolucao}}</td>
+                <tbody v-for="(lista,index) in listaReserva" :key="index">
+                    <td>{{lista.nomeLivro}}</td>
+                    <td>{{lista.usuario}}</td>
+                    <td>{{lista.reserva}}</td>
                 </tbody>
             </table>
         </div>
@@ -38,6 +38,9 @@ export default {
         },
         getLivros() {
             return this.$store.getters.getLivros
+        },
+        getUsuarios() {
+            return this.$store.getters.getUsuarios
         }
     },
     methods: {
@@ -50,7 +53,24 @@ export default {
     },
     mounted() {
         this.$store.dispatch('getLivros')
-        this.$store.dispatch("getReservas")
+        this.$store.dispatch('getReservas')
+        this.$store.dispatch('getUsuarios')
+
+        this.getUsuarios.map(usuario => {
+            this.getLivros.map(livro => {
+                this.getReservas.map(reserva => {
+                    if(usuario.id == reserva.usuarioId && livro.id == reserva.livroId) {
+                        this.listaReserva.push(
+                        {
+                            nomeLivro: livro.nomeLivro, 
+                            usuario: usuario.usuario,
+                            reserva: reserva.devolucao
+                        })
+                        console.log(this.listaReserva)
+                    }
+                })
+            })
+        })
     }
 }
 </script>
