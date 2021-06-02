@@ -1,0 +1,11 @@
+{
+  "name": "db-controle-de-livros",
+  "version": "1.0.0",
+  "description": "",
+  "main": "db.js",
+  "scripts": {
+    "start": "json-server --watch db.json"
+  },
+  "author": "",
+  "license": "ISC"
+}

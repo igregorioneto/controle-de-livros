@@ -1,0 +1,41 @@
+{
+  "usuario": [
+    {
+      "id": 1,
+      "usuario": "admin",
+      "email": "admin@admin.com",
+      "senha": "admin"
+    },
+    {
+      "usuario": "ad",
+      "email": "ad",
+      "senha": "ad",
+      "id": 2
+    }
+  ],
+  "livros": [
+    {
+      "id": 1,
+      "nomeLivro": "Harry Potter",
+      "usuarioId": 1
+    },
+    {
+      "id": 2,
+      "nomeLivro": "O Pequeno principe",
+      "usuarioId": 1
+    },
+    {
+      "id": 3,
+      "nomeLivro": "Harry Potter - Ordem da Fenix",
+      "usuarioId": 1
+    }
+  ],
+  "reservas": [
+    {
+      "id": 1,
+      "devolucao": "06/06/2021",
+      "usuarioId": 1,
+      "livroId": 3
+    }
+  ]
+}
