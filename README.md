@@ -20,5 +20,11 @@ npm run build
 npm run lint
 ```
 
+### JsonServer
+```
+Foi simulado um backend dentro da pasta DB-Controle-de-Livros. 
+Para usar: npm start
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
